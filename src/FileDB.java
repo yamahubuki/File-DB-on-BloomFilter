@@ -59,7 +59,7 @@ class FileDB {
 		}
 		System.out.println("\t\t"+words.size()+" word found.");
 		Long index=filter.getBfindex(words);
-		System.out.println("\t\tindex=0x"+Long.toHexString(index));
+		System.out.println("\t\tindex="+ByteDump.byteDump64(index));
 		files.put(fileName,index);
 		return true;
 	}
@@ -89,14 +89,14 @@ class FileDB {
 
 	public Set<String> searchFile(String keyword){
 		Long index=filter.getBfindex(keyword.getBytes());
-		System.out.println("Searchfile:word="+keyword+" ("+ByteDump.byteDump(keyword.getBytes())+") index=0x"+Long.toHexString(index));
+		System.out.println("Searchfile:word="+keyword+" ("+ByteDump.byteDump(keyword.getBytes())+") index="+ByteDump.byteDump64(index));
 		Set<String> results=new HashSet<>();
 		for(Map.Entry<String,Long> entry : files.entrySet()) {
 			if ((entry.getValue()&index)==index){
 				results.add(entry.getKey());
-				System.out.println("file:"+getFileName(entry.getKey())+"\tis positive. (file index "+Long.toHexString(entry.getValue())+" & word index = 0x"+Long.toHexString(entry.getValue()&index)+")");
+				System.out.println("file:"+getFileName(entry.getKey())+"\tis positive. (file index "+ByteDump.byteDump64(entry.getValue())+" & word index = "+ByteDump.byteDump64(entry.getValue()&index)+")");
 			} else {
-				System.out.println("file:"+getFileName(entry.getKey())+"\tis negative. (file index "+Long.toHexString(entry.getValue())+" & word index = 0x"+Long.toHexString(entry.getValue()&index)+")");
+				System.out.println("file:"+getFileName(entry.getKey())+"\tis negative. (file index "+ByteDump.byteDump64(entry.getValue())+" & word index = "+ByteDump.byteDump64(entry.getValue()&index)+")");
 			}
 		}
 		return results;

@@ -65,7 +65,7 @@ class Main {
 			}
 		}
 
-		System.out.println("STEP3:Create keyword ictionaly");
+		System.out.println("STEP3:Create keyword dictionary");
 		Path filePath=Paths.get(args[1]);
 		if (Files.notExists(filePath)
 			|| Files.isDirectory(filePath)){
@@ -104,8 +104,10 @@ class Main {
 		System.out.println("\nPlease Input search word and press return key.");
 		System.out.println("to exit press Ctrl+C.");
 		while(true){
+			System.out.println();
 		    Scanner scanner = new Scanner(System.in); 
 		    String searchWord = scanner.next();
+			System.out.println();
 			System.out.println("Search file as keyword \""+searchWord+"\"");
 			Set<String> results=db.searchFile(searchWord);
 			System.out.println(results.size()+" file found.");
