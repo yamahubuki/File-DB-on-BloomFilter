@@ -19,15 +19,15 @@ class FileDB {
 	BloomFilter filter;
 
 	public FileDB(){
-		byte[] tmp={0,1,2};
-		filter=new BloomFilter(tmp);
+		byte[] solts={0,1,2};
+		filter=new BloomFilter(solts);
 	}
 
-	public void addkeyWord(byte[] newWord){
+	public void addKeyword(byte[] newWord){
 		keywords.add(newWord);
 	}
 
-	public void addkeyWord(String newWord){
+	public void addKeyword(String newWord){
 		keywords.add(newWord.getBytes());
 	}
 
@@ -73,7 +73,7 @@ class FileDB {
 			return false;
 		}
 
-		for (int i=0;i<base.length-searchWord.length+1;i++){
+		for (int i=0;i<=base.length-searchWord.length;i++){
 			for (int j=0;j<searchWord.length;j++){
 				if (base[i+j]==searchWord[j]){
 					if (j==searchWord.length-1){

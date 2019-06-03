@@ -21,7 +21,7 @@ public class MyHash{
 			System.out.println("SHA-256がシステムで利用できないため、処理を中止しました。");
 			System.exit(1);
 		}
-		byte[] tmp=in;
+		byte[] tmp=in.clone();
 		if (solt != null){
 			tmp=byteJoin(in,solt);
 		}
@@ -31,8 +31,10 @@ public class MyHash{
 
 	//バイト配列を新たに生成し、元の配列に１要素追加して返す
 	private static byte[] byteJoin(byte[] a,byte b){
-		byte[] r = new byte[a.length +1];
-		System.arraycopy(a,0,r,0,a.length);
+		byte[] r=new byte[a.length+1];
+		for(int i=0;i<a.length;i++){
+			r[i]=a[i];
+		}
 		r[a.length]=b;
 		return r;
 	}

@@ -2,6 +2,7 @@
 	bloomフィルタを実装するための
 	インデックス計算クラス
 ********************************************/
+
 import java.util.Set;
 import java.util.HashSet;
 import java.util.Random;

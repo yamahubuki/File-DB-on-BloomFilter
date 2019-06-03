@@ -33,7 +33,6 @@ class Main {
 		}
 
 		System.out.println("STEP1 Search file in \""+args[0]+"\"");
-
 		File dir = new File(args[0]);
 		File[] fileList = dir.listFiles();
 		for(int i=0; i<fileList.length; i++) {
@@ -84,7 +83,7 @@ class Main {
 				if(fileBytes[j]==separator){
 				byte[] tmp=new byte[j-i];
 					System.arraycopy(fileBytes,i,tmp,0,j-i);
-					db.addkeyWord(tmp);
+					db.addKeyword(tmp);
 					System.out.printf("\tadd keyword \""+new String(tmp)+"\"("+ByteDump.byteDump(tmp)+")\n");
 					i=j;
 					findFlg=true;
